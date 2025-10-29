@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const targetSection = document.getElementById(targetId);
 
                 if (targetSection) {
+                    console.log("achou");
                     // Rola a tela suavemente até a seção
                     window.scrollTo({
                         top: targetSection.offsetTop - 70, // -70 para compensar o cabeçalho fixo

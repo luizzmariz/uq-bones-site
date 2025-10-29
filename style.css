@@ -548,29 +548,6 @@ h2 {
     max-height: 40%;
 }
 
-/* --- BOTÃO FLUTUANTE WHATSAPP --- */
-#fixed-whatsapp-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #25D366; /* Cor do WhatsApp */
-    color: white !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    transition: transform 0.3s;
-}
-
-#fixed-whatsapp-btn:hover {
-    transform: scale(1.1);
-}
-
 /* ====================================
    RESPONSIVIDADE (MOBILE FIRST)
    ==================================== */
@@ -647,6 +624,23 @@ h2 {
     }
 }
 
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .uq-top-half,
+    .uq-bottom-half {
+        height: 200px; /* Reduz a altura das imagens de fundo em telas menores */
+    }
+
+    .uq-content-area {
+        width: 95%; /* Aumenta a largura do conteúdo para preencher mais em mobile */
+        padding: 40px 20px;
+    }
+
+    .uq-content-area h2 {
+        font-size: 1.8rem;
+    }
+}
+
 /* Ajustes para telas muito pequenas (Smartphones) */
 @media (max-width: 480px) {
     .hero-title {
@@ -665,4 +659,80 @@ h2 {
     h2 {
         font-size: 1.8rem;
     }
+
+    .uq-top-half,
+    .uq-bottom-half {
+        height: 150px; /* Mais redução de altura para telas muito pequenas */
+    }
+
+    .uq-content-area {
+        padding: 30px 15px;
+    }
+
+    .uq-content-area h2 {
+        font-size: 1.5rem;
+    }
 }
+
+
+
+
+
+
+
+
+/* Estilo para a seção principal que conterá o efeito */
+.uq-split-section {
+    position: relative; /* Essencial para posicionar os filhos */
+    /* display: flex;  */
+    /* flex-direction: column;  */
+    align-items: center; /* Centraliza horizontalmente se as larguras forem menores */
+    justify-content: center;
+    overflow: hidden; /* Garante que nada vaze para fora */
+    height: auto; /* A altura será definida pelo conteúdo + imagens */
+    background-color: transparent; /* A cor de fundo da seção é transparente, o que importa é o conteúdo */
+}
+
+/* Estilo para a DIV que representa a parte superior da logo UQ */
+.uq-top-half {
+    width: 100%; /* Ocupa a largura total */
+    height: 380px; /* Ajuste esta altura conforme necessário para mostrar a imagem */
+    background-image: url('img/Logo_UpperHalf.svg'); /* Caminho para a imagem da metade superior */
+    background-size: cover; /* Ajusta a imagem para cobrir a div */
+    background-position: center bottom; /* Posiciona a parte de baixo da imagem no fundo da div */
+    background-repeat: no-repeat;
+    /* Para criar um efeito de transição suave se quiser que o background se mova levemente */
+    /* transition: background-position 0.5s ease; */
+}
+
+/* Estilo para a DIV que contém o seu conteúdo (a parte branca) */
+.uq-content-area {
+    /* height: 500px; */
+    background-color: var(--color-dark-blue);
+    text-align: center;
+}
+
+.uq-content-area h2 {
+    color: var(--color-text-white);
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+}
+
+.uq-content-area p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+/* Estilo para a DIV que representa a parte inferior da logo UQ */
+.uq-bottom-half {
+    width: 100%; /* Ocupa a largura total */
+    height: 380px; /* Ajuste esta altura conforme necessário para mostrar a imagem */
+    background-image: url('img/Logo_LowerHalf.svg'); /* Caminho para a imagem da metade inferior */
+    background-size: cover; /* Ajusta a imagem para cobrir a div */
+    background-position: center top; /* Posiciona a parte de cima da imagem no topo da div */
+    background-repeat: no-repeat;
+    /* transition: background-position 0.5s ease; */
+}
+
+
