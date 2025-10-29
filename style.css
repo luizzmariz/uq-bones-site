@@ -534,6 +534,10 @@ h2 {
     margin: 5px 0;
 }
 
+.logo-footer{
+    max-height: 40%;
+}
+
 /* --- BOTÃO FLUTUANTE WHATSAPP --- */
 #fixed-whatsapp-btn {
     position: fixed;
