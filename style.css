@@ -24,7 +24,14 @@ body {
     font-family: 'Montserrat', Arial, sans-serif; /* Usando Montserrat como base, se disponível */
     color: var(--color-text-dark);
     line-height: 1.6;
-    background-color: var(--color-background-light);
+    /* background-color: var(--color-background-light); */
+
+    background-image: url("img/Logo_Background.png"); /* Use o caminho correto */
+    background-size: 15%; 
+    background-repeat: repeat; /* Certifica que repete */
+    
+    /* CHAVE: Fixa a posição do background em relação à viewport */
+    /* background-attachment: fixed; */
 }
 
 h1, h2, h3 {
@@ -59,7 +66,7 @@ h2 {
 /* Estrutura Geral */
 .section {
     padding: 80px 5%;
-    max-width: 1400px;
+    /* max-width: 1400px; */
     margin: 0 auto;
 }
 
@@ -166,8 +173,8 @@ h2 {
 /* --- SEÇÃO 2: VANTAGENS --- */
 .advantages-section {
     text-align: center;
-    background-image: url(img/Logo_Background.png);
-    background-size: 10%;
+    /* background-image: url(img/Logo_Background.png);
+    background-size: 6%; */
 }
 
 .advantages-grid {
@@ -235,6 +242,9 @@ h2 {
 /* --- SEÇÃO 4: FORMULÁRIO --- */
 .form-section {
     padding: 80px 0;
+
+    /* background-image: url(img/Logo_Background.png);
+    background-size: 6%; */
 }
 
 .form-container {
