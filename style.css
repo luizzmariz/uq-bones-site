@@ -112,7 +112,97 @@ h2 {
     margin-right: 8px;
 }
 
+
+
+/* --- SEÇÃO 1: HERO --- */
 .hero-section {
+    background-color: var(--color-dark-blue);
+    /* Mantendo o background de cor sólida e removendo a imagem de fundo */
+    background-image: none; 
+    
+    /* Remove as regras de display/alinhamento daqui para mover para o novo container */
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 50px; /* Ajuste o padding inferior se necessário */
+    
+    /* Configura o container para ser Flex e centraliza o layout-container */
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.hero-layout-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    /* max-width: 1200px;  */
+    margin: 0 auto;
+}
+
+.hero-content-col {
+    flex: 1; /* Ocupa metade do espaço */
+    max-width: 50%; /* Garante que não ultrapasse 50% */
+    padding-right: 40px; /* Espaço entre texto e imagem */
+    /* Mantém o texto alinhado à esquerda (padrão) */
+}
+
+.hero-image-col {
+    flex: 1; /* Ocupa a outra metade */
+    max-width: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-main-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Os estilos existentes de .hero-content, .hero-title, etc., se aplicam à .hero-content-col */
+/* Você pode remover a regra .hero-content se ela não for mais necessária */
+
+/* REGRAS PARA MOBILE (Inversão da Ordem) */
+@media (max-width: 1024px) {
+    
+    /* Layout de coluna para mobile */
+    .hero-layout-container {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        text-align: center;
+        padding: 0 5%;
+    }
+
+    /* Coluna de Imagem (DEVE VIR PRIMEIRO) */
+    .hero-image-col {
+        order: 1; /* Força a imagem a aparecer no topo */
+        max-width: 90%; /* Aumenta a largura da imagem para preencher a tela */
+        margin-bottom: 30px; /* Espaço abaixo da imagem */
+    }
+
+    /* Coluna de Conteúdo (DEVE VIR EM SEGUNDO) */
+    .hero-content-col {
+        order: 2; /* Força o texto a aparecer abaixo */
+        max-width: 100%; /* Ocupa a largura total */
+        padding-right: 0;
+        text-align: center; /* Centraliza o texto no mobile */
+    }
+    
+    /* Ajustes nos elementos de texto para centralizar */
+    .hero-title, .hero-subtitle, .hero-text {
+        text-align: center;
+    }
+
+    .highlight-purple {
+        margin: 0 auto 10px auto; /* Centraliza o elemento marcado no mobile */
+    }
+}
+
+
+
+
+/* .hero-section {
     background-color: var(--color-dark-blue);
     background-image: url('img/Hero.jpg');
     background-size: cover;
@@ -122,7 +212,7 @@ h2 {
     align-items: center;
     justify-content: flex-start;
     padding-top: 100px;
-}
+} */
 
 .hero-content {
     max-width: 500px;
@@ -156,6 +246,7 @@ h2 {
 .hero-text {
     margin-bottom: 30px;
     font-size: 1.1rem;
+    color: var(--color-text-white);
 }
 
 .advantages-section {
@@ -507,7 +598,7 @@ h2 {
 
 .model-carousel-container {
     position: relative;
-    max-width: 80%;
+    /* max-width: 80%; */
     margin: 0 auto 80px;
     overflow: hidden;
     padding: 0 40px;
@@ -746,10 +837,13 @@ h2 {
     .model-slide{
         min-width: calc(33.333% - 20px);
     }
+
+    .model-carousel-container {
+        max-width: 80%;
+    }
 }
 
 @media (max-width: 1024px) {
-   
     .main-menu {
         display: none;
     }
@@ -768,6 +862,10 @@ h2 {
 
     .advantages-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .model-carousel-container {
+        max-width: 80%;
     }
 
     .models-grid {
@@ -814,6 +912,10 @@ h2 {
 }
 
 @media (max-width: 768px) {
+    .model-carousel-container {
+        max-width: 80%;
+    }
+
     .uq-top-half,
     .uq-bottom-half {
         height: 100px; 
@@ -864,6 +966,10 @@ h2 {
 
     h2 {
         font-size: 1.8rem;
+    }
+
+    .model-carousel-container {
+        max-width: 100%;
     }
 
     .uq-top-half,
