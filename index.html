@@ -9,14 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-
     <header id="main-header">
         <div class="logo-container">
             <img src="img/Logo.png" alt="UQ Bonés Logo" class="logo">
         </div>
         <nav class="main-menu">
             <a href="#home">Home</a>
-            <a href="#vantagens">Serviço</a>
+            <a href="#models">Serviço</a>
             <a href="#faq">Dúvidas</a>
             <a href="#about">Sobre Nós</a>
         </nav>
@@ -66,68 +65,85 @@
         </div>
     </section>
 
-    <!-- <section id="catalogo" class="catalog-section section">
-        <h2>CONHEÇA NOSSOS <span class="text-yellow">PRINCIPAIS MODELOS</span></h2>
-        <div class="models-grid">
-            <div class="model-item" data-aos="zoom-in">
-                <a href="https://wa.me/5584998386000?text=Ol%C3%A1,%20quero%20fazer%20um%20pedido%20do%20bon%C3%A9%20promocional!" target="_blank">
-                    <img src="https://via.placeholder.com/300x500?text=DAD+HAT" alt="Boné Dad Hat">
-                </a>
-            </div>
-            <div class="model-item" data-aos="zoom-in" data-aos-delay="100">
-                <a href="https://wa.me/5584998386000?text=Ol%C3%A1,%20quero%20fazer%20um%20pedido%20do%20bon%C3%A9%20Trucker%20Telado!" target="_blank">
-                    <img src="https://via.placeholder.com/300x500?text=TRUCKER+TELADO" alt="Boné Trucker Telado">
-                </a>
-            </div>
-            <div class="model-item" data-aos="zoom-in" data-aos-delay="200">
-                <a href="https://wa.me/5584998386000?text=Ol%C3%A1,%20quero%20fazer%20um%20pedido%20do%20bon%C3%A9%20Americano!" target="_blank">
-                    <img src="https://via.placeholder.com/300x500?text=AMERICANO" alt="Boné Americano">
-                </a>
+    <section id="models" class="models-form-section section">
+        <h2 class="models-title">CONHEÇA OS MODELOS DOS NOSSOS BONÉS <span class="text-yellow">PERSONALIZADOS</span></h2>
+        <div class="model-carousel-container">
+
+            <button class="carousel-arrow prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-arrow next"><i class="fas fa-chevron-right"></i></button>
+
+            <div class="carousel-track">
+               
+                <div class="model-slide" data-model="trucker">
+                    <div class="model-panel">
+                        <h3>TRUCKER</h3>
+                        <img src="img/trucker.png" alt="Boné Trucker" class="model-image">
+                        <p class="description">Frente firme | Traseira em telinha | Aba curva com 8 costuras</p>
+                    </div>
+                </div>
+
+
+                <div class="model-slide" data-model="americano">
+                    <div class="model-panel">
+                        <h3>AMERICANO</h3>
+                        <img src="img/americano.png" alt="Boné Americano" class="model-image">
+                        <p class="description">Frente firme | Todo em tecido | Aba curva com 8 costuras</p>
+                    </div>
+                </div>
+               
+                <div class="model-slide" data-model="new-york">
+                    <div class="model-panel">
+                        <h3>NEW YORK</h3>
+                        <img src="img/baseball.png" alt="Boné New York" class="model-image">
+                        <p class="description">Frente firme | Todo em tecido | 6 gomos | Aba curva com 8 costuras</p>
+                        <!-- <span class="premium-tag">EXCLUSIVAMENTE EM TECIDO ALGODÃO PREMIUM + R$A,00</span> -->
+                    </div>
+                </div>
+
             </div>
         </div>
-        <a href="https://api.whatsapp.com/send/?phone=5584998386000&text=Ol%C3%A1%2C+vim+do+site+e+quero+fazer+um+or%C3%A7amento.&type=phone_number&app_absent=0" target="_blank" class="cta-button primary-cta">
-            <i class="fab fa-whatsapp"></i> SOLICITAR ORÇAMENTO
-        </a>
-    </section> -->
+       
+        <div id="detailed-form-container" class="detailed-form-container" data-aos="fade-up" data-aos-once="false">
+           
+            <h3 class="form-selection-title">Você selecionou: <span id="selected-model-name" class="text-yellow">TRUCKER</span></h3>
+            <p class="form-selection-text">Agora, personalize os detalhes e solicite seu orçamento.</p>
 
-    <section class="form-section section">
-        <div class="form-container">
-            <div class="video-side" data-aos="fade-right">
-                <div class="video-placeholder">
-                    <!-- <img src="https://via.placeholder.com/600x400?text=V%C3%ADdeo+Institucional" alt="Vídeo Institucional"> -->
-                    <i class="fas fa-play"></i>
+            <form id="budget-form" class="kali-form detailed-form">
+               
+                <input type="hidden" id="selected-model" name="modelo_escolhido" value="trucker">
+               
+                <label for="aba-cor">COR DA ABA *</label>
+                <input type="text" id="aba-cor" name="aba_cor" required>
+
+
+                <label for="frente-cor">COR DA FRENTE *</label>
+                <input type="text" id="frente-cor" name="frente_cor" required>
+
+
+                <label for="lateral-cor">COR DAS LATERAIS *</label>
+                <input type="text" id="lateral-cor" name="lateral_cor" required>
+
+
+                <label for="quantidade">QUANTIDADE DE BONÉS *</label>
+                <select id="quantidade" name="quantidade" required>
+                    <option value="30 - 100">30 - 100</option>
+                    <option value="100 - 500">100 - 500</option>
+                    <option value="+ 500">+ 500</option>
+                </select>
+               
+                <div class="filepond--drop-label">
+                    <input type="file" id="fileUploadDetalhado" name="fileUpload" style="display:none;">
+                    <label for="fileUploadDetalhado">ANEXAR LOGOMARCA</label>
                 </div>
-            </div>
-            <div class="form-side" data-aos="fade-left">
-                <h2>PREENCHA O FORMULÁRIO E SOLICITE SEU ORÇAMENTO</h2>
-                <p><strong>UM DE NOSSOS ESPECIALISTAS ENTRARÁ EM CONTATO VIA WHATSAPP.</strong></p>
-                
-                <form id="budget-form" class="kali-form">
-                    <label for="name">NOME *</label>
-                    <input type="text" id="name" name="name" required>
 
-                    <label for="email">E-MAIL *</label>
-                    <input type="email" id="email" name="email" required>
+                <label for="name-detailed">NOME *</label>
+                <input type="text" id="name-detailed" name="name" required>
 
-                    <label for="telephone">TELEFONE *</label>
-                    <input type="tel" id="telephone" name="telephone" required>
+                <label for="telephone-detailed">TELEFONE *</label>
+                <input type="tel" id="telephone-detailed" name="telephone" required>
 
-                    <label for="dropdown">QUANTIDADE DE BONÉS *</label>
-                    <select id="dropdown" name="dropdown" required>
-                        <option value="30 - 100">30 - 100</option>
-                        <option value="100 - 500">100 - 500</option>
-                        <option value="+ 500">+ 500</option>
-                    </select>
-
-                    <div class="filepond--drop-label">
-                         <input type="file" id="fileUpload" name="fileUpload" style="display:none;">
-                         <label for="fileUpload">ANEXAR LOGOMARCA</label>
-                    </div>
-
-                    <input type="submit" class="cta-button submit-button" value="SOLICITAR ORÇAMENTO">
-                </form>
-
-            </div>
+                <input type="submit" class="cta-button submit-button" value="SOLICITAR ORÇAMENTO">
+            </form>
         </div>
     </section>
 
@@ -174,7 +190,7 @@
             </a>
         </div>
     </section>
-
+   
     <footer id="main-footer">
         <div class="footer-grid">
             <div class="footer-logo-info">
@@ -197,7 +213,7 @@
             <p>CNPJ 61.543.916/0001-82</p>
         </div>
     </footer>
-    
+   
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
