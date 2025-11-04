@@ -1,15 +1,17 @@
 :root {
-    --color-dark-blue: #1A202C; 
+    /* --color-dark-blue: #1A202C;  */
     --color-purple: #805196;
-    --color-light-blue: #A7B7FF;
-    --color-cyan: #6AC5DD;
+    /* --color-light-blue: #A7B7FF; */
+    /* --color-cyan: #6AC5DD; */
     --color-green: #00EB83;
     --color-yellow: #d7a003; 
     --color-text-white: #ffffff;
     --color-text-dark: #333333;
-    --color-text-brown: #2c2214;
+
     --color-background-light: #f5f5f5;
     --color-border-input: #000;
+
+    --color-dark-brown: #2c2214;
 }
 
 * {
@@ -19,14 +21,14 @@
 }
 
 body {
-    font-family: 'Montserrat', Arial, sans-serif; 
+    font-family: 'Montserrat', sans-serif; 
     color: var(--color-text-dark);
     line-height: 1.6;
     background-color: var(--color-background-light);
 }
 
 h1, h2, h3 {
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 20px;
     color: var(--color-text-dark);
 }
@@ -35,11 +37,6 @@ h2 {
     font-size: 2.5rem;
     text-align: center;
     text-transform: uppercase;
-}
-
-.text-blue {
-    color: var(--color-cyan);
-    font-style: italic;
 }
 
 .text-purple {
@@ -80,7 +77,7 @@ h2 {
 }
 
 .main-menu a {
-    color: var(--color-text-brown);
+    color: var(--color-dark-brown);
     text-decoration: none;
     margin-left: 25px;
     font-weight: 600;
@@ -112,20 +109,14 @@ h2 {
     margin-right: 8px;
 }
 
-
-
-/* --- SEÇÃO 1: HERO --- */
 .hero-section {
-    background-color: var(--color-dark-blue);
-    /* Mantendo o background de cor sólida e removendo a imagem de fundo */
+    background-color: var(--color-dark-brown);
     background-image: none; 
     
-    /* Remove as regras de display/alinhamento daqui para mover para o novo container */
     min-height: 100vh;
-    padding-top: 100px;
-    padding-bottom: 50px; /* Ajuste o padding inferior se necessário */
-    
-    /* Configura o container para ser Flex e centraliza o layout-container */
+    padding-top: 130px;
+    padding-bottom: 50px;
+
     display: flex; 
     align-items: center; 
     justify-content: center;
@@ -136,19 +127,17 @@ h2 {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    /* max-width: 1200px;  */
     margin: 0 auto;
 }
 
 .hero-content-col {
-    flex: 1; /* Ocupa metade do espaço */
-    max-width: 50%; /* Garante que não ultrapasse 50% */
-    padding-right: 40px; /* Espaço entre texto e imagem */
-    /* Mantém o texto alinhado à esquerda (padrão) */
+    flex: 1;
+    max-width: 50%; 
+    padding-right: 40px; 
 }
 
 .hero-image-col {
-    flex: 1; /* Ocupa a outra metade */
+    flex: 1; 
     max-width: 50%; 
     display: flex;
     justify-content: center;
@@ -161,58 +150,35 @@ h2 {
     display: block;
 }
 
-/* Os estilos existentes de .hero-content, .hero-title, etc., se aplicam à .hero-content-col */
-/* Você pode remover a regra .hero-content se ela não for mais necessária */
-
-/* REGRAS PARA MOBILE (Inversão da Ordem) */
 @media (max-width: 1024px) {
-    
-    /* Layout de coluna para mobile */
     .hero-layout-container {
-        flex-direction: column; /* Empilha os itens verticalmente */
+        flex-direction: column; 
         text-align: center;
         padding: 0 5%;
     }
 
-    /* Coluna de Imagem (DEVE VIR PRIMEIRO) */
     .hero-image-col {
-        order: 1; /* Força a imagem a aparecer no topo */
-        max-width: 90%; /* Aumenta a largura da imagem para preencher a tela */
-        margin-bottom: 30px; /* Espaço abaixo da imagem */
+        order: 2; 
+        max-width: 100%; 
+        margin-bottom: 30px;
     }
 
-    /* Coluna de Conteúdo (DEVE VIR EM SEGUNDO) */
     .hero-content-col {
-        order: 2; /* Força o texto a aparecer abaixo */
-        max-width: 100%; /* Ocupa a largura total */
+        order: 1; 
+        max-width: 100%;
         padding-right: 0;
-        text-align: center; /* Centraliza o texto no mobile */
+        text-align: center;
+        margin-bottom: 30px;
     }
     
-    /* Ajustes nos elementos de texto para centralizar */
     .hero-title, .hero-subtitle, .hero-text {
         text-align: center;
     }
 
     .highlight-purple {
-        margin: 0 auto 10px auto; /* Centraliza o elemento marcado no mobile */
+        margin: 0 auto 10px auto; 
     }
 }
-
-
-
-
-/* .hero-section {
-    background-color: var(--color-dark-blue);
-    background-image: url('img/Hero.jpg');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 100px;
-} */
 
 .hero-content {
     max-width: 500px;
@@ -255,14 +221,13 @@ h2 {
 
 .advantages-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px;
     margin-top: 50px;
 }
 
 .advantage-box {
     background-color: var(--color-text-white);
-    padding: 30px 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s;
@@ -273,105 +238,12 @@ h2 {
 }
 
 .advantage-box .icon {
-    font-size: 3rem;
     color: var(--color-purple);
-    margin-bottom: 15px;
 }
 
 .advantage-box h3 {
-    font-size: 1.2rem;
     text-transform: uppercase;
-    color: var(--color-dark-blue);
-}
-
-.catalog-section {
-    text-align: center;
-    background-color: var(--color-dark-blue);
-    color: var(--color-text-white);
-}
-
-.catalog-section h2 {
-    color: var(--color-text-white);
-}
-
-.models-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin: 50px auto;
-    max-width: 900px;
-}
-
-.model-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s;
-}
-
-.model-item img:hover {
-    transform: scale(1.1);
-}
-
-.form-section {
-    padding: 80px 0;
-}
-
-.form-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.video-side {
-    flex: 1;
-    background-color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.video-placeholder {
-    position: relative;
-    cursor: pointer;
-}
-
-.video-placeholder img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    filter: brightness(0.6);
-}
-
-.video-placeholder i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3rem;
-    color: white;
-}
-
-.form-side {
-    flex: 1;
-    padding: 40px;
-    background-color: var(--color-text-white);
-}
-
-.form-side h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    text-align: left;
-}
-
-.form-side p {
-    font-size: 0.9rem;
-    margin-bottom: 30px;
-    text-align: left;
+    color: var(--color-dark-brown);
 }
 
 .kali-form label {
@@ -383,7 +255,6 @@ h2 {
 }
 
 .kali-form input[type="text"],
-.kali-form input[type="email"],
 .kali-form input[type="tel"],
 .kali-form select {
     width: 100%;
@@ -425,29 +296,6 @@ h2 {
     color: var(--color-text-dark) !important;
 }
 
-.clients-section {
-    text-align: center;
-}
-
-.clients-carousel {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin: 40px 0;
-    align-items: center;
-}
-
-.clients-carousel img {
-    max-width: 150px;
-    height: auto;
-    opacity: 0.7;
-    transition: opacity 0.3s;
-}
-
-.clients-carousel img:hover {
-    opacity: 1;
-}
-
 .secondary-cta {
     background-color: var(--color-purple);
     color: var(--color-text-white) !important;
@@ -458,7 +306,7 @@ h2 {
 }
 
 .faq-section {
-    background-color: var(--color-dark-blue);
+    background-color: var(--color-dark-brown);
     color: var(--color-text-white);
 }
 
@@ -473,7 +321,7 @@ h2 {
 }
 
 .accordion-item {
-    background-color: var(--color-dark-blue);
+    background-color: var(--color-dark-brown);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     margin-bottom: 10px;
@@ -552,7 +400,7 @@ h2 {
 }
 
 .uq-content-area {
-    background-color: var(--color-dark-blue); 
+    background-color: var(--color-dark-brown); 
 
     padding: 60px 40px; 
     text-align: center;
@@ -614,15 +462,16 @@ h2 {
 
 .model-slide {
     cursor: pointer;
-    opacity: 0.6; 
-    transition: opacity 0.3s, transform 0.3s;
+    /* opacity: 0.6;  */
+    /* transition: opacity 0.3s, transform 0.3s; */
     border-radius: 10px;
     overflow: hidden;
 }
 
 .model-slide.active {
-    opacity: 1; 
+    /* opacity: 1;  */
     transform: scale(1.05); 
+    box-shadow: #000;
 }
 
 .model-panel {
@@ -713,12 +562,6 @@ h2 {
     text-align: left;
 }
 
-.form-subtitle {
-    font-size: 1.2rem;
-    margin-top: 30px;
-    margin-bottom: 5px;
-}
-
 .whatsapp-contact {
     font-size: 0.8rem;
     color: #555;
@@ -745,11 +588,11 @@ h2 {
 
 .detailed-form .filepond--drop-label:hover,
 .detailed-form .submit-button:hover {
-    background-color: var(--color-text-brown);
+    background-color: var(--color-dark-brown);
 }
 
 #main-footer {
-    background-color: var(--color-dark-blue);
+    background-color: var(--color-dark-brown);
     color: var(--color-text-white);
     padding: 50px 5%;
     font-size: 0.9rem;
@@ -829,6 +672,19 @@ h2 {
 }
 
 @media (min-width: 1024px) {
+    .advantage-box {
+        padding: 30px 20px;
+    }
+
+    .advantage-box .icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .advantage-box h3 {
+        font-size: 1.2rem;
+    }
+
     .uq-top-half,
     .uq-bottom-half {
         height: 380px;
@@ -862,6 +718,19 @@ h2 {
 
     .advantages-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .advantage-box {
+        padding: 30px 20px;
+    }
+
+    .advantage-box .icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .advantage-box h3 {
+        font-size: 1.2rem;
     }
 
     .model-carousel-container {
@@ -964,6 +833,19 @@ h2 {
         grid-template-columns: 1fr;
     }
 
+    .advantage-box {
+        padding: 10px 0px;
+    }
+
+    .advantage-box .icon {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .advantage-box h3 {
+        font-size: 1rem;
+    }
+
     h2 {
         font-size: 1.8rem;
     }
@@ -983,6 +865,10 @@ h2 {
 
     .uq-content-area h2 {
         font-size: 1.5rem;
+    }
+
+    .models-form-section {
+        padding: 50px 0px 50px 0px;
     }
 
     .model-slide {
