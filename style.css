@@ -1,6 +1,6 @@
 :root {
     /* --color-dark-blue: #1A202C;  */
-    --color-purple: #805196;
+    /* --color-purple: #805196; */
     /* --color-light-blue: #A7B7FF; */
     /* --color-cyan: #6AC5DD; */
     --color-green: #00EB83;
@@ -37,10 +37,6 @@ h2 {
     font-size: 2.5rem;
     text-align: center;
     text-transform: uppercase;
-}
-
-.text-purple {
-    color: var(--color-purple);
 }
 
 .text-yellow {
@@ -91,7 +87,7 @@ h2 {
 
 .cta-button {
     background-color: var(--color-yellow);
-    color: var(--color-text-dark) !important;
+    color: var(--color-text-dark);
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -174,10 +170,6 @@ h2 {
     .hero-title, .hero-subtitle, .hero-text {
         text-align: center;
     }
-
-    .highlight-purple {
-        margin: 0 auto 10px auto; 
-    }
 }
 
 .hero-content {
@@ -197,9 +189,10 @@ h2 {
     font-size: 2.5rem;
     line-height: 1.2;
     margin-bottom: 20px;
+    color: var(--color-text-white);
 }
 
-.highlight-purple {
+/* .highlight-purple {
     color: var(--color-text-white);
     border-radius: 8px;
     background-color: var(--color-purple);
@@ -207,7 +200,7 @@ h2 {
     display: block; 
     margin-bottom: 10px;
     width: fit-content;
-}
+} */
 
 .hero-text {
     margin-bottom: 30px;
@@ -238,7 +231,7 @@ h2 {
 }
 
 .advantage-box .icon {
-    color: var(--color-purple);
+    color: var(--color-yellow);
 }
 
 .advantage-box h3 {
@@ -267,7 +260,7 @@ h2 {
 
 .filepond--drop-label {
     margin-top: 20px;
-    background-color: var(--color-green);
+    background-color: var(--color-dark-brown);
     border-radius: 5px;
     text-align: center;
     padding: 15px;
@@ -278,7 +271,7 @@ h2 {
 }
 
 .filepond--drop-label:hover {
-    background-color: var(--color-purple);
+    background-color: var(--color-yellow);
 }
 
 .filepond--drop-label label {
@@ -292,13 +285,13 @@ h2 {
     padding: 15px 0;
     font-size: 1.1rem;
     cursor: pointer;
-    background-color: var(--color-green);
-    color: var(--color-text-dark) !important;
+    background-color: var(--color-yellow);
+    color: var(--color-text-dark) ;
 }
 
 .secondary-cta {
-    background-color: var(--color-purple);
-    color: var(--color-text-white) !important;
+    background-color: var(--color-yellow);
+    color: var(--color-text-white) ;
 }
 
 .secondary-cta:hover {
@@ -374,7 +367,7 @@ h2 {
 
 .final-cta {
     background-color: var(--color-yellow);
-    color: var(--color-text-white) !important;
+    color: var(--color-text-white);
 }
 
 .final-cta:hover {
@@ -582,13 +575,13 @@ h2 {
 
 .detailed-form .filepond--drop-label,
 .detailed-form .submit-button {
-    background-color: var(--color-green); 
-    color: var(--color-text-dark) !important;
+    /* background-color: var(--color-dark-brown);  */
+    color: var(--color-text-white);
 }
 
 .detailed-form .filepond--drop-label:hover,
 .detailed-form .submit-button:hover {
-    background-color: var(--color-dark-brown);
+    background-color: var(--color-yellow);
 }
 
 #main-footer {
@@ -635,12 +628,12 @@ h2 {
 
 .footer-nav a:hover {
     opacity: 1;
-    color: var(--color-purple);
+    color: var(--color-yellow);
 }
 
 .footer-contact li i {
     margin-right: 10px;
-    color: var(--color-purple);
+    color: var(--color-yellow);
 }
 
 .social-icons {
@@ -655,7 +648,7 @@ h2 {
 }
 
 .social-icons a:hover {
-    color: var(--color-purple);
+    color: var(--color-yellow);
 }
 
 .footer-bottom {
@@ -834,7 +827,7 @@ h2 {
     }
 
     .advantage-box {
-        padding: 10px 0px;
+        padding: 10px 5px;
     }
 
     .advantage-box .icon {
