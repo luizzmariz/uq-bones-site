@@ -427,6 +427,25 @@ h2 {
     text-align: center;
 }
 
+.about-content {
+    text-align: justify;
+    padding: 0% 20%;
+}
+
+.about-content p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.about-content-sign{
+    text-align: center;
+
+    font-weight: 600;
+    font-size: 2rem;
+    padding-top: 5%;
+}
+
 .models-form-section {
     text-align: center;
     padding-top: 50px;

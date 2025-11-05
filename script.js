@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- VARIÁVEIS GLOBAIS E ELEMENTOS ---
     const header = document.getElementById('main-header');
-    const detailedFormContainer = document.getElementById('detailed-form-container');
     const carouselContainer = document.querySelector('.model-carousel-container');
     const carouselTrack = document.querySelector('.carousel-track');
     const navLinks = document.querySelectorAll('.main-menu a, .footer-nav a');
@@ -160,10 +159,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Centraliza o slide, atualiza o estado, e rola para o formulário
             updateCarouselPosition(); 
-
-            // setTimeout(() => {
-            //     detailedFormContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // }, 600);
         });
     });
 
