@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // CHAVE: Alinha o carrossel. Força o início a ser o ponto de início do 3º item.
         // O 3º item (índice 2) deve estar no centro.
-        // Movimento para o slide 2: (Largura do Slide * 2) + (Gap * 2)
-        const slideWidth = carouselTrack.children[0].offsetWidth;
-        const offset = (slideWidth + gap);
+
+        // const slideWidth = carouselTrack.children[0].offsetWidth;
+        // const offset = (slideWidth + gap);
         
-        carouselTrack.style.transform = `translateX(-${offset}px)`;
+        // carouselTrack.style.transform = `translateX(-${offset}px)`;
     }
 
 
@@ -127,6 +127,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateSelectedModel() {
+        centerCarousel();
+
         // 1. O slide central no DOM é sempre o TERCEIRO item (índice 2)
         const centralSlideIndexDOM = 2;
         const centralSlideDOM = carouselTrack.children[centralSlideIndexDOM];
@@ -150,6 +152,36 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('selected-model').value = modelData.dataset.model;
         document.getElementById('selected-model-name').textContent = modelData.querySelector('h3').textContent;
     }
+
+    function centerCarousel() {
+        const slideWidth = carouselTrack.children[0].offsetWidth;
+        let offset = (slideWidth + gap);
+        
+        const isMobile = window.matchMedia("(max-width: 800px)").matches;
+        const isTablet = window.matchMedia("(max-width: 1000px)").matches;
+
+        if(isMobile)
+        {
+            console.log("3");
+            carouselTrack.style.transform = `translateX(0px)`;
+        }
+        else 
+        {
+            if(isTablet)
+            {
+                console.log("1");
+                offset = (slideWidth + gap) *2;
+                carouselTrack.style.transform = `translateX(-${offset}px)`;        
+            }
+            else
+            {
+                console.log("2");
+                carouselTrack.style.transform = `translateX(-${offset}px)`;        
+            }
+        }
+    }
+
+    // Chame esta função na inicialização do DOM, e no final das manipulações.
     
     // --- LÓGICA DE EVENTOS E INICIALIZAÇÃO ---
 

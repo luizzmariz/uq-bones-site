@@ -23,7 +23,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif; 
-    color: var(--color-text-dark);
+    color: var(--color-text-white);
     line-height: 1.6;
     background-color: var(--color-background-light);
 }
@@ -31,7 +31,7 @@ body {
 h1, h2, h3 {
     font-weight: 600;
     margin-bottom: 20px;
-    color: var(--color-text-dark);
+    color: var(--color-text-white);
 }
 
 h2 {
@@ -155,13 +155,13 @@ h2 {
     }
 
     .hero-image-col {
-        order: 2; 
+        order: 1; 
         max-width: 100%; 
         margin-bottom: 30px;
     }
 
     .hero-content-col {
-        order: 1; 
+        order: 2; 
         max-width: 100%;
         padding-right: 0;
         text-align: center;
@@ -237,6 +237,10 @@ h2 {
 
 .advantage-box h3 {
     text-transform: uppercase;
+    color: var(--color-dark-grey);
+}
+
+.advantage-box p {
     color: var(--color-dark-grey);
 }
 
@@ -453,7 +457,7 @@ h2 {
 
 .models-title {
     margin-bottom: 40px;
-    color: var(--color-text-dark);
+    /* color: var(--color-text-dark); */
 }
 
 .model-carousel-container {
@@ -469,13 +473,14 @@ h2 {
     transition: none;
     justify-content: space-between;
     gap: 30px;
-    width: fit-content;
+    width: 100%;
 
     transform: translateX(100px);
 }
 
 .model-slide {
-    min-width: calc(33.333% - 20px); /* Desktop: 3 slides visíveis */
+    min-width: 100%;
+    /* min-width: calc(33.333% - 20px);  */
     /* flex-shrink: 0; */
 
     cursor: pointer;
@@ -570,9 +575,21 @@ h2 {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+.detailed-form-container.p.h1.h2.h3{
+    color: var(--color-text-dark);
+}
+
+#budget-form{
+    color: var(--color-text-dark);
+}
+
 .form-selection-title {
     font-size: 1.5rem;
     margin-bottom: 5px;
+}
+
+.selected-model-name{
+    color: var(--color-yellow);
 }
 
 .form-selection-text {
@@ -605,7 +622,7 @@ h2 {
 
 .detailed-form .filepond--drop-label,
 .detailed-form .submit-button {
-    /* background-color: var(--color-dark-grey);  */
+
     color: var(--color-text-white);
 }
 
@@ -623,7 +640,7 @@ h2 {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-columns: 2fr 2fr;
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto 30px;
@@ -641,6 +658,15 @@ h2 {
 .footer-logo-info p {
     margin-top: 15px;
     opacity: 0.8;
+}
+
+.logo-footer{
+    max-height: 40%;
+}
+
+.footer-contact
+{
+    text-align: right;
 }
 
 .footer-nav ul, .footer-contact ul {
@@ -688,10 +714,6 @@ h2 {
 
 .footer-bottom p {
     margin: 5px 0;
-}
-
-.logo-footer{
-    max-height: 40%;
 }
 
 @media (min-width: 1024px) {
@@ -760,13 +782,13 @@ h2 {
         font-size: 1.2rem;
     }
 
-    .model-carousel-container {
-        max-width: 80%;
-    }
-
     .models-grid {
         grid-template-columns: 1fr;
         max-width: 400px;
+    }
+
+    .model-panel h3 {
+        font-size: 1.5rem;
     }
 
     .form-container {
@@ -785,6 +807,10 @@ h2 {
     .footer-grid {
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .footer-logo-info{
+        max-height:min-content;
     }
 
     .footer-logo-info, .footer-nav, .footer-contact {
@@ -889,6 +915,10 @@ h2 {
         max-width: 100%;
     }
 
+    .model-panel h3 {
+        font-size: 1.5rem;
+    }
+
     .uq-top-half,
     .uq-bottom-half {
         height: 100px; 
@@ -912,5 +942,9 @@ h2 {
 
     .about-content p {
         font-size: 1.1rem;
+    }
+
+    .footer-grid {
+        gap: 0px;
     }
 }
