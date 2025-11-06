@@ -12,6 +12,7 @@
     --color-border-input: #000;
 
     --color-dark-brown: #2c2214;
+    --color-dark-grey: #1f1f1f;
 }
 
 * {
@@ -73,7 +74,7 @@ h2 {
 }
 
 .main-menu a {
-    color: var(--color-dark-brown);
+    color: var(--color-dark-grey);
     text-decoration: none;
     margin-left: 25px;
     font-weight: 600;
@@ -106,7 +107,7 @@ h2 {
 }
 
 .hero-section {
-    background-color: var(--color-dark-brown);
+    background-color: var(--color-dark-grey);
     background-image: none; 
     
     min-height: 100vh;
@@ -236,7 +237,7 @@ h2 {
 
 .advantage-box h3 {
     text-transform: uppercase;
-    color: var(--color-dark-brown);
+    color: var(--color-dark-grey);
 }
 
 .kali-form label {
@@ -260,7 +261,7 @@ h2 {
 
 .filepond--drop-label {
     margin-top: 20px;
-    background-color: var(--color-dark-brown);
+    background-color: var(--color-dark-grey);
     border-radius: 5px;
     text-align: center;
     padding: 15px;
@@ -299,7 +300,7 @@ h2 {
 }
 
 .faq-section {
-    background-color: var(--color-dark-brown);
+    background-color: var(--color-dark-grey);
     color: var(--color-text-white);
 }
 
@@ -314,7 +315,7 @@ h2 {
 }
 
 .accordion-item {
-    background-color: var(--color-dark-brown);
+    background-color: var(--color-dark-grey);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     margin-bottom: 10px;
@@ -393,7 +394,7 @@ h2 {
 }
 
 .uq-content-area {
-    background-color: var(--color-dark-brown); 
+    background-color: var(--color-dark-grey); 
 
     padding: 60px 40px; 
     text-align: center;
@@ -433,7 +434,6 @@ h2 {
 }
 
 .about-content p {
-    font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 20px;
 }
@@ -460,29 +460,40 @@ h2 {
     position: relative;
     /* max-width: 80%; */
     margin: 0 auto 80px;
-    overflow: hidden;
+    overflow:hidden;
     padding: 0 40px;
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: none;
     justify-content: space-between;
     gap: 30px;
     width: fit-content;
+
+    transform: translateX(100px);
 }
 
 .model-slide {
+    min-width: calc(33.333% - 20px); /* Desktop: 3 slides visíveis */
+    /* flex-shrink: 0; */
+
     cursor: pointer;
     /* opacity: 0.6;  */
     /* transition: opacity 0.3s, transform 0.3s; */
+
+    padding: 10px 10px 10px 10px;
+
     border-radius: 10px;
     overflow: hidden;
 }
 
 .model-slide.active {
     /* opacity: 1;  */
-    transform: scale(1.05); 
+
+    padding: 0px 0px 0px 0px;
+
+    /* transform: scale(1.05);  */
     box-shadow: #000;
 }
 
@@ -594,7 +605,7 @@ h2 {
 
 .detailed-form .filepond--drop-label,
 .detailed-form .submit-button {
-    /* background-color: var(--color-dark-brown);  */
+    /* background-color: var(--color-dark-grey);  */
     color: var(--color-text-white);
 }
 
@@ -604,7 +615,7 @@ h2 {
 }
 
 #main-footer {
-    background-color: var(--color-dark-brown);
+    background-color: var(--color-dark-grey);
     color: var(--color-text-white);
     padding: 50px 5%;
     font-size: 0.9rem;
@@ -709,6 +720,10 @@ h2 {
     .model-carousel-container {
         max-width: 80%;
     }
+
+    .about-content p {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -790,6 +805,10 @@ h2 {
     .uq-bottom-half {
         height: 380px;
     }
+
+    .about-content p {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -828,6 +847,10 @@ h2 {
     }
    
     .model-panel h3 {
+        font-size: 1.5rem;
+    }
+
+    .about-content p {
         font-size: 1.5rem;
     }
 }
@@ -883,7 +906,11 @@ h2 {
         padding: 50px 0px 50px 0px;
     }
 
-    .model-slide {
-        min-width: 50%; 
+    .about-content{
+        padding: 0% 5%;
+    }
+
+    .about-content p {
+        font-size: 1.1rem;
     }
 }
