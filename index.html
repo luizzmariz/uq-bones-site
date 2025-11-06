@@ -6,10 +6,17 @@
     <title>Bonés Personalizados</title>
     <link rel="icon" type="image/x-icon" href="img/Logo_Icon.png">
     <link rel="stylesheet" href="style.css">
+
+    <!-- FontAwesome / icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google fonts / font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Flag Icons / flag icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
 </head>
 <body>
     <header id="main-header">
@@ -18,8 +25,8 @@
         </div>
         <nav class="main-menu">
             <a href="#home">Home</a>
-            <a href="#models">Serviço</a>
-            <a href="#faq">Dúvidas</a>
+            <a href="#models">Produtos</a>
+            <a href="#faq">Informações</a>
             <a href="#about">Sobre Nós</a>
         </nav>
         <a href="https://api.whatsapp.com/send/?phone=5584998386000&text=Olá, vim do site e quero fazer um orçamento." target="_blank" class="cta-button header-cta">
@@ -48,7 +55,7 @@
     </div>
 </section>
 
-    <section id="vantagens" class="advantages-section section">
+    <!-- <section id="vantagens" class="advantages-section section">
         <h2>NOSSO <span >SERVIÇO</span></h2>
         <div class="advantages-grid">
             <div class="advantage-box" data-aos="fade-up">
@@ -72,7 +79,7 @@
                 <p>Estamos prontos para atender nosso cliente e ajudá-lo a todo momento, do primeiro ao último contato.</p>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section id="models" class="models-form-section section">
         <h2 class="models-title">NOSSOS <span >PRODUTOS</span></h2>
@@ -113,7 +120,7 @@
                     <div class="model-panel">
                         <h3>DAD HAT</h3>
                         <img src="img/dadhat.png" alt="Boné Dad Hat" class="model-image">
-                        <p class="description">Frente mole | Todo em tecido | 6 gomos | Aba curva com 8 costuras</p>
+                        <p class="description">Frente fléxivel | Todo em tecido | 6 gomos | Aba curva com 6 costuras</p>
                     </div>
                 </div>
             </div>
@@ -163,26 +170,65 @@
     <section id="uq-split-section" class="uq-split-section">
             <div class="uq-top-half"></div>
             <div id="faq" class="uq-content-area faq-section">
-                <h2 >INFORMAÇÕES <span >DO NEGÓCIO</span></h2>
-                <div class="accordion-container">
-                    <details class="accordion-item" open>
-                        <summary class="accordion-title">Quantidade mínima de unidades por pedido</summary>
-                        <div class="accordion-content">
-                            <p>Você pode realizar pedidos a partir de 30 unidades.</p>
+                
+                <div>
+                    <!-- <h2>NOSSO <span >SERVIÇO</span></h2> -->
+                    <div class="advantages-grid">
+                        <div class="advantage-box" data-aos="fade-up">
+                            <i class="fa fa-certificate icon" aria-hidden="true"></i>
+                            <h3>QUALIDADE ÚNICA</h3>
+                            <p>Trabalhamos somente com produtos de alta qualidade, no melhor modelo padrão disponível.</p>
                         </div>
-                    </details>
-                    <details class="accordion-item">
-                        <summary class="accordion-title">Prazo de fabricação e entrega do pedido</summary>
-                        <div class="accordion-content">
-                            <p>O prazo de fabricação e entrega do produto é de 30 dias úteis.</p>
+                        <div class="advantage-box" data-aos="fade-up" data-aos-delay="100">
+                            <i class="fa fa-pencil icon" aria-hidden="true"></i>
+                            <h3>PERSONALIZAÇÃO</h3>
+                            <p>Buscando os melhores tecidos, cores e opções do mercado para você fazer o boné do jeitinho que quiser.</p>
                         </div>
-                    </details>
-                    <details class="accordion-item">
-                        <summary class="accordion-title">Forma de pagamento</summary>
-                        <div class="accordion-content">
-                            <p>Você pode realizar o pagamento via pix ou cartão de crédito. O pagamento é feito em 2 etapas: uma entrada de 50% após a confirmação do modelo do pedido e a finalização dos outros 50% após a fabricação.</p>
+                        <div class="advantage-box" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fa fa-shipping-fast icon" aria-hidden="true"></i>
+                            <h3>ENTREGA PARA TODO O BRASIL</h3>
+                            <p>Assim que estiver pronto, enviamos seu pedido rapidinho, para você, em qualquer lugar do país</p>
                         </div>
-                    </details>
+                        <div class="advantage-box" data-aos="fade-up" data-aos-delay="300">
+                            <i class="fa fa-user icon" aria-hidden="true"></i>
+                            <h3>CLIENTE EM 1° LUGAR</h3>
+                            <p>Estamos prontos para atender nosso cliente e ajudá-lo a todo momento, do primeiro ao último contato.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 >INFORMAÇÕES <span >DO NEGÓCIO</span></h2>
+                    <div class="accordion-container">
+                        <details class="accordion-item" open>
+                            <summary class="accordion-title">Quantidade mínima de unidades por pedido</summary>
+                            <div class="accordion-content">
+                                <p>Você pode realizar pedidos a partir de 30 unidades.</p>
+                            </div>
+                        </details>
+                        <details class="accordion-item">
+                            <summary class="accordion-title">Prazo de fabricação e entrega do pedido</summary>
+                            <div class="accordion-content">
+                                <p>O prazo de fabricação e entrega do produto é de 30 dias úteis.</p>
+                            </div>
+                        </details>
+                        <details class="accordion-item">
+                            <summary class="accordion-title">Detalhes específicos dos modelos</summary>
+                            <div class="accordion-content">
+                                <p>Trucker: Frente firme, aba curva revestida de tecido com 8 costuras, tela de poliéster nas laterais e traseira. fecho plástico ajustável ou de tecido com fivela de aço.</p>
+                                <p>Americano: Frente firme, aba curva revestida de tecido com 8 costuras, revestimento de tecido nas laterais e traseira. fecho plástico ajustável ou de tecido com fivela de aço.</p>
+                                <p>Baseball: Frente firme (e dividida ao meio), aba curva revestida de tecido com 8 costuras, revestimento de tecido nas laterais e traseira. fecho plástico ajustável ou de tecido com fivela de aço.</p>
+                                <p>Dad hat: Frente flexível (e dividida ao meio), aba curva revestida de tecido e com 8 costuras, revestimento de tecido na copas laterais e traseira. fecho plástico ajustável ou de tecido com fivela de aço.</p>
+                                <p>Bucket: Revestimento completo em tecido, aba flexível com 7 costuras, forro interno e tamanho padrão.</p>
+                            </div>
+                        </details>
+                        <details class="accordion-item">
+                            <summary class="accordion-title">Forma de pagamento</summary>
+                            <div class="accordion-content">
+                                <p>Você pode realizar o pagamento via pix ou cartão de crédito. O pagamento é feito em 2 etapas: uma entrada de 50% após a confirmação do modelo do pedido e a finalização dos outros 50% após a fabricação.</p>
+                            </div>
+                        </details>
+                    </div>
                 </div>
             </div>
             <div class="uq-bottom-half"></div>
@@ -206,14 +252,45 @@
         </div>
     </section>
 
-    <section class="final-cta-section section">
+    <section id="lead-form-section" class="section lead-form-section">
+    <div class="lead-form-container">
+        
         <div class="cta-content" data-aos="zoom-in">
             <p><strong >Receba seu orçamento em até 24h</strong> e dê o primeiro passo para ver <strong>sua marca estampada</strong> com estilo.</p>
-            <a href="http://wa.me/55849998386000" target="_blank" class="cta-button final-cta">
-                <i class="fab fa-whatsapp"></i> Solicitar Orçamento
-            </a>
         </div>
-    </section>
+
+        <form id="whatsapp-lead-form">
+            <div class="input-group-row">
+                
+                <div class="input-group ddi-group">
+                    <label for="ddi-select">DDI</label>
+                    <div class="custom-select-wrapper">
+                        <select id="ddi-select" name="ddi" required>
+                            <option value="+55" data-flag="🇧🇷" selected>🇧🇷 (+55)</option>
+                            <option value="+1" data-flag="🇺🇸">🇺🇸 (+1)</option>
+                            <option value="+351" data-flag="🇵🇹">🇵🇹 (+351)</option>
+                            </select>
+                        <!-- <span class="flag-display fi fi-br"></span> -->
+                        <span id="flag-display">🇧🇷 (+55)</span>
+                    </div>
+                </div>
+                
+                <div class="input-group number-group">
+                    <label for="whatsapp-number">Número do WhatsApp</label>
+                    <input type="tel" id="whatsapp-number" name="whatsapp_number" placeholder="(99) 9 9999-9999" required>
+                </div>
+            </div>
+
+            <button type="submit" class="cta-button primary-cta next-button">Próximo</button>
+        </form>
+
+        <!-- <p class="privacy-text">
+            Ao enviar este formulário, você concorda com as nossas 
+            <a href="#" target="_blank" class="privacy-link">Políticas de Privacidade.</a>
+        </p> -->
+
+    </div>
+</section>
    
     <footer id="main-footer">
         <div class="footer-grid">
