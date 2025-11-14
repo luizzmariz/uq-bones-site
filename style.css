@@ -629,7 +629,7 @@ h2 {
 }
 
 .lead-form-container {
-    max-width: 600px;
+    max-width: 40%;
     margin: 0 auto;
 }
 
@@ -659,7 +659,7 @@ h2 {
 .input-group label {
     font-weight: 600;
     margin-bottom: 5px;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
 }
 
 .ddi-group {
@@ -703,6 +703,7 @@ h2 {
     border-radius: 5px;
     font-size: 1rem;
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
     transition: border-color 0.3s;
 }
@@ -742,19 +743,76 @@ h2 {
     border-bottom: 1px solid #666;
 }
 
-@media (max-width: 480px) {
-    .form-title {
-        font-size: 1.5rem;
-    }
 
-    .input-group-row {
-        flex-direction: column;
-        gap: 20px;
-    }
 
-    .ddi-group, .number-group {
-        flex-basis: auto;
-    }
+
+.dynamic-select-wrapper {
+    position: relative; 
+    cursor: pointer;
+    user-select: none;
+
+    color: var(--color-text-dark);
+}
+
+.dynamic-select-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--color-text-white);
+    transition: border-color 0.3s;
+    justify-content: space-between;
+}
+
+.dynamic-select-header::after {
+    content: '▼'; /* Ícone de dropdown */
+    font-size: 0.7em;
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+/* Rotação do ícone quando a lista suspensa está ativa */
+.dynamic-select-header-active::after {
+    transform: rotate(180deg);
+}
+
+.dynamic-select-header:hover {
+    border-color: #999;
+}
+
+/* Estilo do Icone de Bandeira */
+.dynamic-select-header .fi, .dynamic-select-option .fi {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Lista Suspensa (Opções) */
+.dynamic-select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    background-color: var(--color-text-white);
+    z-index: 50; /* Garante que fique acima de outros elementos */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* Inicia escondido */
+}
+
+.dynamic-select-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    transition: background-color 0.2s;
+}
+
+.dynamic-select-option:hover {
+    background-color: #f0f0f0;
 }
 
 /* FOOTER */
@@ -860,7 +918,7 @@ h2 {
 
     .uq-top-half,
     .uq-bottom-half {
-        height: 380px;
+        height: 500px;
     }
 
     .model-slide{
@@ -957,11 +1015,19 @@ h2 {
 
     .uq-top-half,
     .uq-bottom-half {
-        height: 380px;
+        height: 200px;
+    }
+
+    .about-content {
+        padding: 0% 10%;
     }
 
     .about-content p {
         font-size: 1.5rem;
+    }
+
+    .lead-form-container {
+        max-width: 80%;
     }
 }
 
@@ -1004,8 +1070,16 @@ h2 {
         font-size: 1.5rem;
     }
 
+    .about-content {
+        padding: 0% 10%;
+    }
+
     .about-content p {
         font-size: 1.5rem;
+    }
+
+    .lead-form-container {
+        max-width: 80%;
     }
 }
 
@@ -1070,6 +1144,26 @@ h2 {
 
     .about-content p {
         font-size: 1.1rem;
+    }
+
+    .form-title {
+        font-size: 1.5rem;
+    }
+
+    .input-group-row {
+        gap: 20px;
+    }
+
+    .ddi-group, .number-group {
+        flex-basis: auto;
+    }
+
+    .input-group label {
+        font-size: 0.9rem;
+    }
+
+    .lead-form-container {
+        max-width: 100%;
     }
 
     .footer-grid {

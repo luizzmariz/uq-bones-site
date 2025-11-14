@@ -165,21 +165,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // const budgetForm = document.getElementById('budget-form');
-    // if (budgetForm) {
-    //     budgetForm.addEventListener('submit', function(e) {
-    //         e.preventDefault();
-    //         alert('Orçamento solicitado! Entraremos em contato via WhatsApp em breve.');
-    //         budgetForm.reset();
-    //     });
-    // }
-
-    const detailedBudgetForm = document.getElementById('budget-form'); // Use o ID correto do formulário
+    const detailedBudgetForm = document.getElementById('budget-form'); 
     if (detailedBudgetForm) {
         detailedBudgetForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // 1. Captura dos Dados
             const modelo = document.getElementById('selected-model').value;
             const corAba = document.getElementById('aba-cor').value;
             const corFrente = document.getElementById('frente-cor').value;
@@ -187,33 +177,25 @@ document.addEventListener('DOMContentLoaded', function() {
             const quantidade = document.getElementById('quantidade').value;
             const nome = document.getElementById('name-detailed').value;
             
-            // --- 2. Montagem da Mensagem ---
-            
-            const numeroWhatsApp = "5584998386000"; // O número que você forneceu
+            const numeroWhatsApp = "5584998386000";
             
             let mensagem = `Olá, me chamo ${nome}, tenho interesse em ter um `;
             
             mensagem += `modelo *${modelo.toUpperCase()}*`;
-            mensagem += ` (${quantidade} unidades). Esses são os detalhes do modelo\n\n`;
+            mensagem += ` (${quantidade} unidades). Esses são os detalhes do modelo:\n\n`;
             
             mensagem += `-Cor da Aba: ${corAba || 'Não especificada'}\n`;
             mensagem += `-Cor da Frente: ${corFrente || 'Não especificada'}\n`;
             mensagem += `-Cor das Laterais: ${corLateral || 'Não especificada'}\n\n`;
 
-            // Aviso sobre a logomarca
             mensagem += `*A logomarca para o boné será enviada por mim logo após este contato.`;
 
-            // 3. Formatação da Mensagem para a URL
-            // encodeURIComponent() é CRÍTICO para garantir que espaços e quebras de linha funcionem na URL.
             const mensagemFormatada = encodeURIComponent(mensagem);
 
-            // 4. Criação da URL Final e Redirecionamento
             const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagemFormatada}`;
             
-            // Abre o link em uma nova aba
             window.open(urlWhatsApp, '_blank');
             
-            // Opcional: Resetar o formulário após o envio
             detailedBudgetForm.reset();
         });
     }
@@ -233,59 +215,110 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Lógica do Formulário de Lead WhatsApp ---
 
-    const ddiSelect = document.getElementById('ddi-select');
-    const flagDisplay = document.getElementById('flag-display');
+    const ddiHeader = document.getElementById('ddi-header');
+    const ddiOptionsContainer = document.getElementById('ddi-options');
+    const ddiOptions = document.querySelectorAll('.dynamic-select-option');
+    const ddiHiddenInput = document.getElementById('ddi-hidden-input');
+    const headerFlag = document.getElementById('header-flag');
+    const headerText = document.getElementById('header-text');
     const whatsappNumberInput = document.getElementById('whatsapp-number');
     const leadForm = document.getElementById('whatsapp-lead-form');
 
-    // Função para atualizar o display da bandeira
-    function updateFlagDisplay() {
-        const selectedOption = ddiSelect.options[ddiSelect.selectedIndex];
-        const flag = selectedOption.getAttribute('data-flag');
-        const value = selectedOption.value;
-        flagDisplay.textContent = `${flag} (${value})`;
+    function toggleDdiDropdown() {
+        if (ddiOptionsContainer.style.display === 'block') {
+            ddiOptionsContainer.style.display = 'none';
+            ddiHeader.classList.remove('dynamic-select-header-active');
+        } else {
+            ddiOptionsContainer.style.display = 'block';
+            ddiHeader.classList.add('dynamic-select-header-active');
+        }
     }
 
-    // 1. Inicializa o display da bandeira
-    updateFlagDisplay();
+    ddiHeader.addEventListener('click', toggleDdiDropdown);
 
-    // 2. Event Listener para mudanças no select
-    ddiSelect.addEventListener('change', updateFlagDisplay);
+    ddiOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            const value = this.getAttribute('data-value');
+            const countryCode = this.getAttribute('data-country');
+            const text = this.getAttribute('data-text');
+            
+            ddiHiddenInput.value = value;
+            
+            headerText.textContent = text;
+            headerFlag.className = 'fi'; 
+            headerFlag.classList.add(`fi-${countryCode}`);
+            
+            toggleDdiDropdown();
+        });
+    });
 
-    // 3. (Opcional) Máscara Simples para o Telefone (para simular o visual da imagem)
+    document.addEventListener('click', function(e) {
+        if (!ddiHeader.contains(e.target) && !ddiOptionsContainer.contains(e.target)) {
+            if (ddiOptionsContainer.style.display === 'block') {
+                toggleDdiDropdown();
+            }
+        }
+    });
+
     whatsappNumberInput.addEventListener('input', function() {
-        let value = this.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+        const ddiValue = document.getElementById('ddi-hidden-input').value;
+        
+        let value = this.value.replace(/\D/g, '');
         let maskedValue = '';
 
-        if (value.length > 0) {
-            // Exemplo de máscara (99) 9 9999-9999
+        if (ddiValue === '+55') {
+            value = value.substring(0, 11); 
+
             if (value.length > 0) maskedValue += `(${value.substring(0, 2)}`;
-            if (value.length > 2) maskedValue += `) ${value.substring(2, 3)}`;
-            if (value.length > 3) maskedValue += ` ${value.substring(3, 7)}`;
+            if (value.length > 2) maskedValue += `) ${value.substring(2, 7)}`;
             if (value.length > 7) maskedValue += `-${value.substring(7, 11)}`;
         }
         
+        else if (ddiValue === '+351') {
+            value = value.substring(0, 9);
+
+            if (value.length > 0) maskedValue += `${value.substring(0, 3)}`;
+            if (value.length > 3) maskedValue += `-${value.substring(3, 6)}`;
+            if (value.length > 6) maskedValue += `-${value.substring(6, 9)}`;
+        }
+        
+        else if (ddiValue === '+1') {
+            value = value.substring(0, 10);
+
+            if (value.length > 0) maskedValue += `(${value.substring(0, 3)}`;
+            if (value.length > 3) maskedValue += `) ${value.substring(3, 6)}`;
+            if (value.length > 6) maskedValue += `-${value.substring(6, 10)}`;
+        }
+
+        else if (ddiValue === '+54') {
+            value = value.substring(0, 11);
+            
+            if (value.length > 0) maskedValue += `${value.substring(0, 1)}`;
+            if (value.length > 1) maskedValue += ` (${value.substring(1, 4)}`;
+            if (value.length > 4) maskedValue += `) ${value.substring(4, 7)}`;
+            if (value.length > 7) maskedValue += `-${value.substring(7, 11)}`;
+        }
+        
+        else {
+            if (value.length > 0) maskedValue = value;
+        }
+
         this.value = maskedValue;
     });
 
-
-    // 4. Manipulador de Envio do Formulário
     leadForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
         const ddi = ddiSelect.value;
-        const number = whatsappNumberInput.value.replace(/\D/g, ''); // Limpa a máscara
+        const number = whatsappNumberInput.value.replace(/\D/g, '');
         const fullNumber = ddi + number;
         
-        // Simulação: Aqui você enviaria os dados para o seu servidor ou para a API do WhatsApp
         console.log("Número Completo para Envio:", fullNumber);
         
-        // Alerta de sucesso
         alert(`Seu layout está sendo preparado! Entraremos em contato no WhatsApp: ${fullNumber}`);
         
-        // Limpar o formulário
         leadForm.reset();
-        updateFlagDisplay(); // Reseta a bandeira
+        updateFlagDisplay(); 
     });
 });
 
