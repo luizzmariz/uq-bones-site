@@ -165,12 +165,56 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const budgetForm = document.getElementById('budget-form');
-    if (budgetForm) {
-        budgetForm.addEventListener('submit', function(e) {
+    // const budgetForm = document.getElementById('budget-form');
+    // if (budgetForm) {
+    //     budgetForm.addEventListener('submit', function(e) {
+    //         e.preventDefault();
+    //         alert('Orçamento solicitado! Entraremos em contato via WhatsApp em breve.');
+    //         budgetForm.reset();
+    //     });
+    // }
+
+    const detailedBudgetForm = document.getElementById('budget-form'); // Use o ID correto do formulário
+    if (detailedBudgetForm) {
+        detailedBudgetForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Orçamento solicitado! Entraremos em contato via WhatsApp em breve.');
-            budgetForm.reset();
+
+            // 1. Captura dos Dados
+            const modelo = document.getElementById('selected-model').value;
+            const corAba = document.getElementById('aba-cor').value;
+            const corFrente = document.getElementById('frente-cor').value;
+            const corLateral = document.getElementById('lateral-cor').value;
+            const quantidade = document.getElementById('quantidade').value;
+            const nome = document.getElementById('name-detailed').value;
+            
+            // --- 2. Montagem da Mensagem ---
+            
+            const numeroWhatsApp = "5584998386000"; // O número que você forneceu
+            
+            let mensagem = `Olá, me chamo ${nome}, tenho interesse em ter um `;
+            
+            mensagem += `modelo *${modelo.toUpperCase()}*`;
+            mensagem += ` (${quantidade} unidades). Esses são os detalhes do modelo\n\n`;
+            
+            mensagem += `-Cor da Aba: ${corAba || 'Não especificada'}\n`;
+            mensagem += `-Cor da Frente: ${corFrente || 'Não especificada'}\n`;
+            mensagem += `-Cor das Laterais: ${corLateral || 'Não especificada'}\n\n`;
+
+            // Aviso sobre a logomarca
+            mensagem += `*A logomarca para o boné será enviada por mim logo após este contato.`;
+
+            // 3. Formatação da Mensagem para a URL
+            // encodeURIComponent() é CRÍTICO para garantir que espaços e quebras de linha funcionem na URL.
+            const mensagemFormatada = encodeURIComponent(mensagem);
+
+            // 4. Criação da URL Final e Redirecionamento
+            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagemFormatada}`;
+            
+            // Abre o link em uma nova aba
+            window.open(urlWhatsApp, '_blank');
+            
+            // Opcional: Resetar o formulário após o envio
+            detailedBudgetForm.reset();
         });
     }
 
