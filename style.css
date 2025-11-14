@@ -633,16 +633,6 @@ h2 {
     margin: 0 auto;
 }
 
-.form-title {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
-
-.form-subtitle {
-    color: var(--color-text-dark);
-    margin-bottom: 40px;
-}
-
 .input-group-row {
     display: flex;
     gap: 15px;
@@ -813,6 +803,95 @@ h2 {
 
 .dynamic-select-option:hover {
     background-color: #f0f0f0;
+}
+
+/* --- Estilos para o Formulário Multi-Etapas (WIZARD) --- */
+
+/* Esconde todas as etapas que não estão ativas */
+.form-step {
+    display: none;
+    transition: opacity 0.5s;
+    padding: 0 0 30px 0;
+}
+
+.form-step.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Esconde o label de quantidade na etapa 4, pois ele tem um texto de Etapa (4 de 5) */
+.form-step[data-step="4"] label {
+    display: block; /* Mantém o label visível */
+}
+
+/* Inputs e Selects genéricos para etapas 2, 3 e 4 */
+#lead-email, #lead-name, #lead-quantity {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+/* Estilo do Botão Voltar (cinza) */
+.back-button {
+    background-color: #f0f0f0;
+    color: #666 !important;
+    font-size: 1.2rem;
+    padding: 15px 0;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.back-button:hover {
+    background-color: #e0e0e0;
+    transform: none;
+}
+
+/* Estilo para a Etapa de Upload (Etapa 5) */
+.upload-container {
+    text-align: center;
+    padding: 40px 20px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    margin-top: 20px;
+}
+
+.upload-container p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.upload-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--color-text-white);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #333;
+}
+
+.upload-button i {
+    margin-left: 10px;
+    font-size: 1.2rem;
+}
+
+.file-name-display {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* Altera o texto do botão "Próximo" para "Solicitar Orçamento" na Etapa 5 */
+.form-step[data-step="5"] + #next-btn {
+    content: "Solicitar Orçamento";
 }
 
 /* FOOTER */

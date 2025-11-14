@@ -215,6 +215,167 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Lógica do Formulário de Lead WhatsApp ---
 
+    // --- LÓGICA DO FORMULÁRIO MULTI-ETAPAS (WIZARD) ---
+
+    const form = document.getElementById('multi-step-form');
+    const stepContainer = document.getElementById('form-steps-container');
+    const steps = document.querySelectorAll('.form-step');
+    const nextBtn = document.getElementById('next-btn');
+    const backBtn = document.getElementById('back-btn');
+    const currentStepInput = document.getElementById('current-step');
+
+    let currentStep = parseInt(currentStepInput.value); // Inicia na Etapa 1
+    const totalSteps = steps.length; // 5 etapas
+
+    // Variável para armazenar os dados finais (para envio por e-mail/WhatsApp)
+    const collectedData = {};
+
+
+    // --- FUNÇÕES DE NAVEGAÇÃO E ESTADO ---
+
+    // Atualiza o estado visual do formulário (botões, etapas)
+    function updateFormState() {
+        // Esconde todos, mostra apenas o atual
+        steps.forEach(step => {
+            step.classList.remove('active');
+            if (parseInt(step.dataset.step) === currentStep) {
+                step.classList.add('active');
+            }
+        });
+
+        // 1. Atualiza o texto do botão "Próximo"
+        if (currentStep === totalSteps) {
+            nextBtn.textContent = 'Solicitar Orçamento';
+        } else {
+            nextBtn.textContent = 'Próximo';
+        }
+
+        // 2. Controla a visibilidade do botão "Voltar"
+        if (currentStep > 1) {
+            backBtn.style.display = 'block';
+        } else {
+            backBtn.style.display = 'none';
+        }
+        
+        // 3. Atualiza a contagem de etapas no label (ex: Etapa 4 de 5)
+
+        // const currentStepLabel = document.querySelector(`.form-step[data-step="${currentStep}"] label`);
+        // if (currentStepLabel && currentStepLabel.id !== 'lead-email' && currentStepLabel.id !== 'lead-name') {
+        //     currentStepLabel.textContent = currentStepLabel.textContent.replace(/\(Etapa \d+ de \d+\)/, '').trim() + ` (Etapa ${currentStep} de ${totalSteps})`;
+        // }
+
+        // 4. Salva o estado atual
+        currentStepInput.value = currentStep;
+    }
+
+    // Coleta os dados da etapa atual e valida
+    function validateAndCollectData(step) {
+        const inputs = step.querySelectorAll('input, select');
+        let isValid = true;
+        
+        inputs.forEach(input => {
+            // Validação básica de campo obrigatório
+            if (input.hasAttribute('required') && input.value.trim() === '') {
+                isValid = false;
+                input.focus();
+            }
+            // Coleta de dados
+            collectedData[input.name] = input.value.trim();
+        });
+
+        // Coleta o DDI separadamente do input hidden
+        if (currentStep === 1) {
+            collectedData['ddi'] = document.getElementById('ddi-hidden-input').value;
+        }
+
+        // Validação especial para o campo de arquivo (Etapa 5)
+        if (currentStep === 5 && !document.getElementById('logo-upload-input').files.length) {
+            // Logomarca é obrigatória? Se sim, descomente a linha abaixo.
+            // isValid = false; 
+        }
+        
+        return isValid;
+    }
+
+    // --- MANIPULADORES DE EVENTOS ---
+
+    // Navegação para TRÁS
+    backBtn.addEventListener('click', () => {
+        if (currentStep > 1) {
+            currentStep--;
+            updateFormState();
+        }
+    });
+
+    // Manipulador de SUBMISSÃO (Próximo / Solicitar Orçamento)
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+        
+        // 1. Valida a etapa atual
+        if (!validateAndCollectData(currentStepElement)) {
+            alert("Por favor, preencha o campo obrigatório.");
+            return;
+        }
+
+        // 2. Se não for a etapa final, avança
+        if (currentStep < totalSteps) {
+            currentStep++;
+            updateFormState();
+            return;
+        }
+
+        // 3. SE FOR A ETAPA FINAL (Solicitar Orçamento)
+        sendFinalSubmission(collectedData);
+    });
+
+
+    // --- FUNÇÃO DE ENVIO FINAL ---
+    function sendFinalSubmission(data) {
+        const numeroWhatsApp = "5584998386000"; 
+        
+        let mensagem = `Olá! Meu nome é ${data.lead_name} e gostaria de solicitar um layout. \n`;
+        mensagem += `Email de contato: ${data.lead_email}\n`;
+        mensagem += `Telefone: ${data.ddi} ${data.whatsapp_number}\n\n`;
+        
+        mensagem += `--- INFORMAÇÕES DO PEDIDO ---\n`;
+        mensagem += `- Quantidade Desejada: ${data.lead_quantity}\n`;
+        mensagem += `- Arquivo da Logo: Será enviado a seguir. \n\n`;
+        
+        mensagem += `Aguardo o seu contato para continuarmos o orçamento!`;
+
+        const mensagemFormatada = encodeURIComponent(mensagem);
+        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagemFormatada}`;
+        
+        // Abre o link do WhatsApp
+        window.open(urlWhatsApp, '_blank');
+        
+        // Simulação de envio de e-mail (necessita de um backend real)
+        console.log("Dados Coletados para E-mail:", data);
+
+        alert("Seu pedido de layout foi enviado! Você será redirecionado para o WhatsApp para confirmar o envio da logo.");
+        form.reset();
+        currentStep = 1; // Volta para a primeira etapa após o envio
+        updateFormState();
+    }
+
+
+    // --- LÓGICA DE UPLOAD (Apenas para exibir o nome do arquivo) ---
+    const logoUploadInput = document.getElementById('logo-upload-input');
+    const fileNameDisplay = document.getElementById('file-name-display');
+
+    logoUploadInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+            fileNameDisplay.textContent = `Arquivo: ${this.files[0].name}`;
+        } else {
+            fileNameDisplay.textContent = 'Nenhum arquivo selecionado.';
+        }
+    });
+
+    // --- EXECUÇÃO INICIAL ---
+    updateFormState();
+
     const ddiHeader = document.getElementById('ddi-header');
     const ddiOptionsContainer = document.getElementById('ddi-options');
     const ddiOptions = document.querySelectorAll('.dynamic-select-option');
@@ -236,6 +397,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
     ddiHeader.addEventListener('click', toggleDdiDropdown);
 
+    function updatePhonePlaceholder(ddi) {
+        const input = whatsappNumberInput;
+        let placeholderText = '(99) 9 9999-9999';
+        let maxLength = 11;
+        
+        // Brasil (+55) - Formato: (XX) XXXXX-XXXX
+        if (ddi === '+55') {
+            placeholderText = '(99) 9 9999-9999';
+            maxLength = 11; 
+        }
+        // Portugal (+351) - Formato: XXX XXX XXX
+        else if (ddi === '+351') {
+            placeholderText = '999 999 999';
+            maxLength = 9;
+        }
+        // Estados Unidos (+1) - Formato: X (XXX) XXX-XXXX
+        else if (ddi === '+1') {
+            placeholderText = '(999) 999-9999';
+            maxLength = 10;
+        }
+        // Argentina (+54) - Formato: XXXX XXX XXXX
+        else if (ddi === '+54') {
+            placeholderText = '9 999 999 9999';
+            maxLength = 11; 
+        }
+        
+        input.value = ''; 
+        
+        input.placeholder = placeholderText; 
+        
+        input.setAttribute('maxlength', maxLength + 4); 
+    }
+
     ddiOptions.forEach(option => {
         option.addEventListener('click', function() {
             const value = this.getAttribute('data-value');
@@ -248,6 +442,8 @@ document.addEventListener('DOMContentLoaded', function() {
             headerFlag.className = 'fi'; 
             headerFlag.classList.add(`fi-${countryCode}`);
             
+            updatePhonePlaceholder(value);
+
             toggleDdiDropdown();
         });
     });
@@ -278,8 +474,8 @@ document.addEventListener('DOMContentLoaded', function() {
             value = value.substring(0, 9);
 
             if (value.length > 0) maskedValue += `${value.substring(0, 3)}`;
-            if (value.length > 3) maskedValue += `-${value.substring(3, 6)}`;
-            if (value.length > 6) maskedValue += `-${value.substring(6, 9)}`;
+            if (value.length > 3) maskedValue += ` ${value.substring(3, 6)}`;
+            if (value.length > 6) maskedValue += ` ${value.substring(6, 9)}`;
         }
         
         else if (ddiValue === '+1') {
