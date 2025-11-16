@@ -337,7 +337,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log("Dados Coletados para E-mail:", data);
 
-        alert("Seu pedido de layout foi enviado! Você será redirecionado para o WhatsApp para confirmar o envio da logo.");
         form.reset();
         currentStep = 1; 
         updateFormState();

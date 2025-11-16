@@ -756,13 +756,12 @@ h2 {
 }
 
 .dynamic-select-header::after {
-    content: '▼'; /* Ícone de dropdown */
+    content: '▼'; 
     font-size: 0.7em;
     margin-left: 10px;
     transition: transform 0.3s;
 }
 
-/* Rotação do ícone quando a lista suspensa está ativa */
 .dynamic-select-header-active::after {
     transform: rotate(180deg);
 }
@@ -771,13 +770,11 @@ h2 {
     border-color: #999;
 }
 
-/* Estilo do Icone de Bandeira */
 .dynamic-select-header .fi, .dynamic-select-option .fi {
     margin-right: 10px;
     font-size: 1.2rem;
 }
 
-/* Lista Suspensa (Opções) */
 .dynamic-select-options {
     position: absolute;
     top: 100%;
@@ -789,9 +786,9 @@ h2 {
     border-top: none;
     border-radius: 0 0 5px 5px;
     background-color: var(--color-text-white);
-    z-index: 50; /* Garante que fique acima de outros elementos */
+    z-index: 50; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: none; /* Inicia escondido */
+    display: none;
 }
 
 .dynamic-select-option {
@@ -819,12 +816,15 @@ h2 {
     opacity: 1;
 }
 
+.form-step p {
+    font-size: 1rem;
+}
+
 /* Esconde o label de quantidade na etapa 4, pois ele tem um texto de Etapa (4 de 5) */
 .form-step[data-step="4"] label {
     display: block; /* Mantém o label visível */
 }
 
-/* Inputs e Selects genéricos para etapas 2, 3 e 4 */
 #lead-email, #lead-name, #lead-quantity {
     width: 100%;
     padding: 12px 15px;
@@ -835,7 +835,6 @@ h2 {
     margin-top: 10px;
 }
 
-/* Estilo do Botão Voltar (cinza) */
 .back-button {
     background-color: #f0f0f0;
     color: #666 !important;
@@ -850,7 +849,6 @@ h2 {
     transform: none;
 }
 
-/* Estilo para a Etapa de Upload (Etapa 5) */
 .upload-container {
     text-align: center;
     padding: 40px 20px;
@@ -889,7 +887,6 @@ h2 {
     color: #888;
 }
 
-/* Altera o texto do botão "Próximo" para "Solicitar Orçamento" na Etapa 5 */
 .form-step[data-step="5"] + #next-btn {
     content: "Solicitar Orçamento";
 }
