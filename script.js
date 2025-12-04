@@ -215,273 +215,273 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- LÓGICA DO FORMULÁRIO MULTI-ETAPAS (WIZARD) ---
 
-    const form = document.getElementById('multi-step-form');
-    const steps = document.querySelectorAll('.form-step');
-    const nextBtn = document.getElementById('next-btn');
-    const backBtn = document.getElementById('back-btn');
-    const currentStepInput = document.getElementById('current-step');
+    // const form = document.getElementById('multi-step-form');
+    // const steps = document.querySelectorAll('.form-step');
+    // const nextBtn = document.getElementById('next-btn');
+    // const backBtn = document.getElementById('back-btn');
+    // const currentStepInput = document.getElementById('current-step');
 
-    let currentStep = parseInt(currentStepInput.value); 
-    const totalSteps = steps.length; 
+    // let currentStep = parseInt(currentStepInput.value); 
+    // const totalSteps = steps.length; 
 
-    const collectedData = {};
+    // const collectedData = {};
 
-    function updateFormState() {
-        steps.forEach(step => {
-            const stepNum = parseInt(step.dataset.step);
+    // function updateFormState() {
+    //     steps.forEach(step => {
+    //         const stepNum = parseInt(step.dataset.step);
             
-            if (stepNum === currentStep) {
-                step.classList.add('active');
-            } else {
-                step.classList.remove('active');
-            }
+    //         if (stepNum === currentStep) {
+    //             step.classList.add('active');
+    //         } else {
+    //             step.classList.remove('active');
+    //         }
 
-            const inputs = step.querySelectorAll('input, select');
-            inputs.forEach(input => {
-                if (input.hasAttribute('data-initial-required')) {
-                    if (stepNum === currentStep) {
-                        input.setAttribute('required', 'required');
-                    } else {
-                        input.removeAttribute('required');
-                    }
-                }
-            });
-        });
+    //         const inputs = step.querySelectorAll('input, select');
+    //         inputs.forEach(input => {
+    //             if (input.hasAttribute('data-initial-required')) {
+    //                 if (stepNum === currentStep) {
+    //                     input.setAttribute('required', 'required');
+    //                 } else {
+    //                     input.removeAttribute('required');
+    //                 }
+    //             }
+    //         });
+    //     });
 
-        if (currentStep === totalSteps) {
-            nextBtn.textContent = 'Solicitar Orçamento';
-        } else {
-            nextBtn.textContent = 'Próximo';
-        }
+    //     if (currentStep === totalSteps) {
+    //         nextBtn.textContent = 'Solicitar Orçamento';
+    //     } else {
+    //         nextBtn.textContent = 'Próximo';
+    //     }
 
-        if (currentStep > 1) {
-            backBtn.style.display = 'block';
-        } else {
-            backBtn.style.display = 'none';
-        }
+    //     if (currentStep > 1) {
+    //         backBtn.style.display = 'block';
+    //     } else {
+    //         backBtn.style.display = 'none';
+    //     }
         
-        // const currentStepLabel = document.querySelector(`.form-step[data-step="${currentStep}"] label`);
-        // if (currentStepLabel && currentStepLabel.id !== 'lead-email' && currentStepLabel.id !== 'lead-name') {
-        //     currentStepLabel.textContent = currentStepLabel.textContent.replace(/\(Etapa \d+ de \d+\)/, '').trim() + ` (Etapa ${currentStep} de ${totalSteps})`;
-        // }
+    //     // const currentStepLabel = document.querySelector(`.form-step[data-step="${currentStep}"] label`);
+    //     // if (currentStepLabel && currentStepLabel.id !== 'lead-email' && currentStepLabel.id !== 'lead-name') {
+    //     //     currentStepLabel.textContent = currentStepLabel.textContent.replace(/\(Etapa \d+ de \d+\)/, '').trim() + ` (Etapa ${currentStep} de ${totalSteps})`;
+    //     // }
 
-        currentStepInput.value = currentStep;
-    }
+    //     currentStepInput.value = currentStep;
+    // }
 
-    function validateAndCollectData(step) {
-        const inputs = step.querySelectorAll('input, select');
-        let isValid = true;
+    // function validateAndCollectData(step) {
+    //     const inputs = step.querySelectorAll('input, select');
+    //     let isValid = true;
         
-        inputs.forEach(input => {
-            if (input.hasAttribute('required') && input.value.trim() === '') {
-                isValid = false;
-            }
-            collectedData[input.name] = input.value.trim();
-        });
+    //     inputs.forEach(input => {
+    //         if (input.hasAttribute('required') && input.value.trim() === '') {
+    //             isValid = false;
+    //         }
+    //         collectedData[input.name] = input.value.trim();
+    //     });
 
-        if (currentStep === 1) {
-            collectedData['ddi'] = document.getElementById('ddi-hidden-input').value;
-        }
+    //     if (currentStep === 1) {
+    //         collectedData['ddi'] = document.getElementById('ddi-hidden-input').value;
+    //     }
 
-        if (currentStep === 5 && !document.getElementById('logo-upload-input').files.length) {
-            // Logomarca é obrigatória? Se sim, descomente a linha abaixo.
-            // isValid = false; 
-        }
+    //     if (currentStep === 5 && !document.getElementById('logo-upload-input').files.length) {
+    //         // Logomarca é obrigatória? Se sim, descomente a linha abaixo.
+    //         // isValid = false; 
+    //     }
         
-        return isValid;
-    }
+    //     return isValid;
+    // }
 
-    backBtn.addEventListener('click', () => {
-        if (currentStep > 1) {
-            currentStep--;
-            updateFormState();
-        }
-    });
+    // backBtn.addEventListener('click', () => {
+    //     if (currentStep > 1) {
+    //         currentStep--;
+    //         updateFormState();
+    //     }
+    // });
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
+    // form.addEventListener('submit', function(e) {
+    //     e.preventDefault();
         
-        const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+    //     const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
 
-        if (!validateAndCollectData(currentStepElement)) { 
-            alert("Por favor, preencha o campo obrigatório.");
-            return;
-        }
+    //     if (!validateAndCollectData(currentStepElement)) { 
+    //         alert("Por favor, preencha o campo obrigatório.");
+    //         return;
+    //     }
 
-        if (currentStep < totalSteps) { 
-            currentStep++;
-            updateFormState(); 
-            return; 
-        }
+    //     if (currentStep < totalSteps) { 
+    //         currentStep++;
+    //         updateFormState(); 
+    //         return; 
+    //     }
 
-        sendFinalSubmission(collectedData);
-    });
+    //     sendFinalSubmission(collectedData);
+    // });
 
-    function sendFinalSubmission(data) {
-        const numeroWhatsApp = "5584998386000"; 
+    // function sendFinalSubmission(data) {
+    //     const numeroWhatsApp = "5584998386000"; 
         
-        let mensagem = `Olá! Meu nome é ${data.lead_name} e gostaria de solicitar um layout. \n`;
-        mensagem += `Email de contato: ${data.lead_email}\n`;
-        mensagem += `Telefone: ${data.ddi} ${data.whatsapp_number}\n\n`;
+    //     let mensagem = `Olá! Meu nome é ${data.lead_name} e gostaria de solicitar um layout. \n`;
+    //     mensagem += `Email de contato: ${data.lead_email}\n`;
+    //     mensagem += `Telefone: ${data.ddi} ${data.whatsapp_number}\n\n`;
         
-        mensagem += `--- INFORMAÇÕES DO PEDIDO ---\n`;
-        mensagem += `- Quantidade Desejada: ${data.lead_quantity}\n`;
-        mensagem += `- Arquivo da Logo: Será enviado a seguir. \n\n`;
+    //     mensagem += `--- INFORMAÇÕES DO PEDIDO ---\n`;
+    //     mensagem += `- Quantidade Desejada: ${data.lead_quantity}\n`;
+    //     mensagem += `- Arquivo da Logo: Será enviado a seguir. \n\n`;
         
-        mensagem += `Aguardo o seu contato para continuarmos o orçamento!`;
+    //     mensagem += `Aguardo o seu contato para continuarmos o orçamento!`;
 
-        const mensagemFormatada = encodeURIComponent(mensagem);
-        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagemFormatada}`;
+    //     const mensagemFormatada = encodeURIComponent(mensagem);
+    //     const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagemFormatada}`;
         
-        window.open(urlWhatsApp, '_blank');
+    //     window.open(urlWhatsApp, '_blank');
         
-        console.log("Dados Coletados para E-mail:", data);
+    //     console.log("Dados Coletados para E-mail:", data);
 
-        form.reset();
-        currentStep = 1; 
-        updateFormState();
-    }
+    //     form.reset();
+    //     currentStep = 1; 
+    //     updateFormState();
+    // }
 
-    const logoUploadInput = document.getElementById('logo-upload-input');
-    const fileNameDisplay = document.getElementById('file-name-display');
+    // const logoUploadInput = document.getElementById('logo-upload-input');
+    // const fileNameDisplay = document.getElementById('file-name-display');
 
-    logoUploadInput.addEventListener('change', function() {
-        if (this.files.length > 0) {
-            fileNameDisplay.textContent = `Arquivo: ${this.files[0].name}`;
-        } else {
-            fileNameDisplay.textContent = 'Nenhum arquivo selecionado.';
-        }
-    });
+    // logoUploadInput.addEventListener('change', function() {
+    //     if (this.files.length > 0) {
+    //         fileNameDisplay.textContent = `Arquivo: ${this.files[0].name}`;
+    //     } else {
+    //         fileNameDisplay.textContent = 'Nenhum arquivo selecionado.';
+    //     }
+    // });
 
-    // --- EXECUÇÃO INICIAL ---
+    // // --- EXECUÇÃO INICIAL ---
     
-    updateFormState();
+    // updateFormState();
 
-    const ddiHeader = document.getElementById('ddi-header');
-    const ddiOptionsContainer = document.getElementById('ddi-options');
-    const ddiOptions = document.querySelectorAll('.dynamic-select-option');
-    const ddiHiddenInput = document.getElementById('ddi-hidden-input');
-    const headerFlag = document.getElementById('header-flag');
-    const headerText = document.getElementById('header-text');
-    const whatsappNumberInput = document.getElementById('whatsapp-number');
-    const leadForm = document.getElementById('whatsapp-lead-form');
+    // const ddiHeader = document.getElementById('ddi-header');
+    // const ddiOptionsContainer = document.getElementById('ddi-options');
+    // const ddiOptions = document.querySelectorAll('.dynamic-select-option');
+    // const ddiHiddenInput = document.getElementById('ddi-hidden-input');
+    // const headerFlag = document.getElementById('header-flag');
+    // const headerText = document.getElementById('header-text');
+    // const whatsappNumberInput = document.getElementById('whatsapp-number');
+    // const leadForm = document.getElementById('whatsapp-lead-form');
 
-    function toggleDdiDropdown() {
-        if (ddiOptionsContainer.style.display === 'block') {
-            ddiOptionsContainer.style.display = 'none';
-            ddiHeader.classList.remove('dynamic-select-header-active');
-        } else {
-            ddiOptionsContainer.style.display = 'block';
-            ddiHeader.classList.add('dynamic-select-header-active');
-        }
-    }
+    // function toggleDdiDropdown() {
+    //     if (ddiOptionsContainer.style.display === 'block') {
+    //         ddiOptionsContainer.style.display = 'none';
+    //         ddiHeader.classList.remove('dynamic-select-header-active');
+    //     } else {
+    //         ddiOptionsContainer.style.display = 'block';
+    //         ddiHeader.classList.add('dynamic-select-header-active');
+    //     }
+    // }
 
-    ddiHeader.addEventListener('click', toggleDdiDropdown);
+    // ddiHeader.addEventListener('click', toggleDdiDropdown);
 
-    function updatePhonePlaceholder(ddi) {
-        const input = whatsappNumberInput;
-        let placeholderText = '(99) 9 9999-9999';
-        let maxLength = 11;
+    // function updatePhonePlaceholder(ddi) {
+    //     const input = whatsappNumberInput;
+    //     let placeholderText = '(99) 9 9999-9999';
+    //     let maxLength = 11;
         
-        // Brasil (+55) - Formato: (XX) XXXXX-XXXX
-        if (ddi === '+55') {
-            placeholderText = '(99) 9 9999-9999';
-            maxLength = 11; 
-        }
-        // Portugal (+351) - Formato: XXX XXX XXX
-        else if (ddi === '+351') {
-            placeholderText = '999 999 999';
-            maxLength = 9;
-        }
-        // Estados Unidos (+1) - Formato: X (XXX) XXX-XXXX
-        else if (ddi === '+1') {
-            placeholderText = '(999) 999-9999';
-            maxLength = 10;
-        }
-        // Argentina (+54) - Formato: XXXX XXX XXXX
-        else if (ddi === '+54') {
-            placeholderText = '9 999 999 9999';
-            maxLength = 11; 
-        }
+    //     // Brasil (+55) - Formato: (XX) XXXXX-XXXX
+    //     if (ddi === '+55') {
+    //         placeholderText = '(99) 9 9999-9999';
+    //         maxLength = 11; 
+    //     }
+    //     // Portugal (+351) - Formato: XXX XXX XXX
+    //     else if (ddi === '+351') {
+    //         placeholderText = '999 999 999';
+    //         maxLength = 9;
+    //     }
+    //     // Estados Unidos (+1) - Formato: X (XXX) XXX-XXXX
+    //     else if (ddi === '+1') {
+    //         placeholderText = '(999) 999-9999';
+    //         maxLength = 10;
+    //     }
+    //     // Argentina (+54) - Formato: XXXX XXX XXXX
+    //     else if (ddi === '+54') {
+    //         placeholderText = '9 999 999 9999';
+    //         maxLength = 11; 
+    //     }
         
-        input.value = ''; 
+    //     input.value = ''; 
         
-        input.placeholder = placeholderText; 
+    //     input.placeholder = placeholderText; 
         
-        input.setAttribute('maxlength', maxLength + 4); 
-    }
+    //     input.setAttribute('maxlength', maxLength + 4); 
+    // }
 
-    ddiOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const value = this.getAttribute('data-value');
-            const countryCode = this.getAttribute('data-country');
-            const text = this.getAttribute('data-text');
+    // ddiOptions.forEach(option => {
+    //     option.addEventListener('click', function() {
+    //         const value = this.getAttribute('data-value');
+    //         const countryCode = this.getAttribute('data-country');
+    //         const text = this.getAttribute('data-text');
             
-            ddiHiddenInput.value = value;
+    //         ddiHiddenInput.value = value;
             
-            headerText.textContent = text;
-            headerFlag.className = 'fi'; 
-            headerFlag.classList.add(`fi-${countryCode}`);
+    //         headerText.textContent = text;
+    //         headerFlag.className = 'fi'; 
+    //         headerFlag.classList.add(`fi-${countryCode}`);
             
-            updatePhonePlaceholder(value);
+    //         updatePhonePlaceholder(value);
 
-            toggleDdiDropdown();
-        });
-    });
+    //         toggleDdiDropdown();
+    //     });
+    // });
 
-    document.addEventListener('click', function(e) {
-        if (!ddiHeader.contains(e.target) && !ddiOptionsContainer.contains(e.target)) {
-            if (ddiOptionsContainer.style.display === 'block') {
-                toggleDdiDropdown();
-            }
-        }
-    });
+    // document.addEventListener('click', function(e) {
+    //     if (!ddiHeader.contains(e.target) && !ddiOptionsContainer.contains(e.target)) {
+    //         if (ddiOptionsContainer.style.display === 'block') {
+    //             toggleDdiDropdown();
+    //         }
+    //     }
+    // });
 
-    whatsappNumberInput.addEventListener('input', function() {
-        const ddiValue = document.getElementById('ddi-hidden-input').value;
+    // whatsappNumberInput.addEventListener('input', function() {
+    //     const ddiValue = document.getElementById('ddi-hidden-input').value;
         
-        let value = this.value.replace(/\D/g, '');
-        let maskedValue = '';
+    //     let value = this.value.replace(/\D/g, '');
+    //     let maskedValue = '';
 
-        if (ddiValue === '+55') {
-            value = value.substring(0, 11); 
+    //     if (ddiValue === '+55') {
+    //         value = value.substring(0, 11); 
 
-            if (value.length > 0) maskedValue += `(${value.substring(0, 2)}`;
-            if (value.length > 2) maskedValue += `) ${value.substring(2, 7)}`;
-            if (value.length > 7) maskedValue += `-${value.substring(7, 11)}`;
-        }
+    //         if (value.length > 0) maskedValue += `(${value.substring(0, 2)}`;
+    //         if (value.length > 2) maskedValue += `) ${value.substring(2, 7)}`;
+    //         if (value.length > 7) maskedValue += `-${value.substring(7, 11)}`;
+    //     }
         
-        else if (ddiValue === '+351') {
-            value = value.substring(0, 9);
+    //     else if (ddiValue === '+351') {
+    //         value = value.substring(0, 9);
 
-            if (value.length > 0) maskedValue += `${value.substring(0, 3)}`;
-            if (value.length > 3) maskedValue += ` ${value.substring(3, 6)}`;
-            if (value.length > 6) maskedValue += ` ${value.substring(6, 9)}`;
-        }
+    //         if (value.length > 0) maskedValue += `${value.substring(0, 3)}`;
+    //         if (value.length > 3) maskedValue += ` ${value.substring(3, 6)}`;
+    //         if (value.length > 6) maskedValue += ` ${value.substring(6, 9)}`;
+    //     }
         
-        else if (ddiValue === '+1') {
-            value = value.substring(0, 10);
+    //     else if (ddiValue === '+1') {
+    //         value = value.substring(0, 10);
 
-            if (value.length > 0) maskedValue += `(${value.substring(0, 3)}`;
-            if (value.length > 3) maskedValue += `) ${value.substring(3, 6)}`;
-            if (value.length > 6) maskedValue += `-${value.substring(6, 10)}`;
-        }
+    //         if (value.length > 0) maskedValue += `(${value.substring(0, 3)}`;
+    //         if (value.length > 3) maskedValue += `) ${value.substring(3, 6)}`;
+    //         if (value.length > 6) maskedValue += `-${value.substring(6, 10)}`;
+    //     }
 
-        else if (ddiValue === '+54') {
-            value = value.substring(0, 11);
+    //     else if (ddiValue === '+54') {
+    //         value = value.substring(0, 11);
             
-            if (value.length > 0) maskedValue += `${value.substring(0, 1)}`;
-            if (value.length > 1) maskedValue += ` (${value.substring(1, 4)}`;
-            if (value.length > 4) maskedValue += `) ${value.substring(4, 7)}`;
-            if (value.length > 7) maskedValue += `-${value.substring(7, 11)}`;
-        }
+    //         if (value.length > 0) maskedValue += `${value.substring(0, 1)}`;
+    //         if (value.length > 1) maskedValue += ` (${value.substring(1, 4)}`;
+    //         if (value.length > 4) maskedValue += `) ${value.substring(4, 7)}`;
+    //         if (value.length > 7) maskedValue += `-${value.substring(7, 11)}`;
+    //     }
         
-        else {
-            if (value.length > 0) maskedValue = value;
-        }
+    //     else {
+    //         if (value.length > 0) maskedValue = value;
+    //     }
 
-        this.value = maskedValue;
-    });
+    //     this.value = maskedValue;
+    // });
 });
 
 window.onresize = centerCarousel;
