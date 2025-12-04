@@ -137,9 +137,9 @@ document.addEventListener('DOMContentLoaded', function() {
             updateSelectedModel();
         }
 
-        if (indexClicked === 2) {
-            detailedFormContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        // if (indexClicked === 2) {
+        //     detailedFormContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // }
     });
 
     const navLinks = document.querySelectorAll('.main-menu a, .footer-nav a');
@@ -171,24 +171,24 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
 
             const modelo = document.getElementById('selected-model').value;
-            const corAba = document.getElementById('aba-cor').value;
-            const corFrente = document.getElementById('frente-cor').value;
-            const corLateral = document.getElementById('lateral-cor').value;
-            const quantidade = document.getElementById('quantidade').value;
-            const nome = document.getElementById('name-detailed').value;
+            // const corAba = document.getElementById('aba-cor').value;
+            // const corFrente = document.getElementById('frente-cor').value;
+            // const corLateral = document.getElementById('lateral-cor').value;
+            // const quantidade = document.getElementById('quantidade').value;
+            // const nome = document.getElementById('name-detailed').value;
             
-            const numeroWhatsApp = "5584998386000";
+            const numeroWhatsApp = "5584986851053";
             
-            let mensagem = `Olá, me chamo ${nome}, tenho interesse em ter um `;
+            let mensagem = `Olá, vim do site e tenho interesse em um produto do `;
             
-            mensagem += `modelo *${modelo.toUpperCase()}*`;
-            mensagem += ` (${quantidade} unidades). Esses são os detalhes do modelo:\n\n`;
+            mensagem += `modelo *${modelo.toUpperCase()}*!`;
+            // mensagem += ` (${quantidade} unidades). Esses são os detalhes do modelo:\n\n`;
             
-            mensagem += `-Cor da Aba: ${corAba || 'Não especificada'}\n`;
-            mensagem += `-Cor da Frente: ${corFrente || 'Não especificada'}\n`;
-            mensagem += `-Cor das Laterais: ${corLateral || 'Não especificada'}\n\n`;
+            // mensagem += `-Cor da Aba: ${corAba || 'Não especificada'}\n`;
+            // mensagem += `-Cor da Frente: ${corFrente || 'Não especificada'}\n`;
+            // mensagem += `-Cor das Laterais: ${corLateral || 'Não especificada'}\n\n`;
 
-            mensagem += `*A logomarca para o boné será enviada por mim logo após este contato.`;
+            // mensagem += `*A logomarca para o boné será enviada por mim logo após este contato.`;
 
             const mensagemFormatada = encodeURIComponent(mensagem);
 
