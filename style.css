@@ -425,9 +425,43 @@ h2 {
     text-align: center;
 }
 
+.about-layout-container {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between;
+    width: 100%;
+    /* max-width: 1200px;  */
+    margin: 0 auto;
+}
+
+.about-image-col {
+    flex: 1; /* Ocupa metade do espaço */
+    max-width: 45%; /* Um pouco menos que 50% para dar mais espaço ao texto */
+    padding-right: 40px; 
+}
+
+.about-main-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Opcional: Adiciona um toque visual */
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.about-content-col {
+    flex: 1; /* Ocupa o restante do espaço */
+    max-width: 55%; 
+}
+
+.about-content h2 {
+    margin-top: 0; /* Remove margem superior desnecessária */
+}
+
+
+
 .about-content {
     text-align: justify;
-    padding: 0% 20%;
+    /* padding: 0% 20%; */
 }
 
 .about-content p {
@@ -1064,6 +1098,27 @@ h2 {
     .form-side {
         order: 2;
         padding: 30px;
+    }
+
+    .about-layout-container {
+        flex-direction: column; /* Empilha os itens */
+        text-align: center;
+    }
+
+    .about-image-col {
+        order: 1; /* Imagem acima */
+        max-width: 80%;
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .about-content-col {
+        order: 2; /* Texto abaixo */
+        max-width: 100%;
+    }
+    
+    .about-content-sign {
+        text-align: center; /* Centraliza a assinatura/sigla */
     }
 
     .footer-grid {
